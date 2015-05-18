@@ -1,3 +1,5 @@
+
+
 <form action = "dlindexer.php" method = "GET">
 	<h1>Make a file and write the html for dlindexer to use</h1>
 	<h4>Name</h4>
@@ -15,25 +17,32 @@
 </form>
 
 <?php
-include ("dlwriter.php");
+//include ("dlwriter.php");
+include ("anime.class.php");
 $title = "";
 $anime = "";
 $amount = 0;
 
 if(isset($_GET["file"])){
 		$anime = $_GET["file"];
+		$amount = 0;
 		$title = $_GET['file'];
-		listsources($anime, $title);
+		$show = new anime($anime, $amount, $title);
+		$show->listsources();
+		//listsources($anime, $title);
 }else if (isset($_GET['anime'])){
 		$anime = $_GET['anime'];
+		$title = $_GET['anime'];
 		$amount = $_GET['amount'];
-		makefile($anime, $amount);
+		$show = new anime($anime, $amount, $title);
+		$show->makefile();
+		//makefile($anime, $amount);
 };
 
 
 //grabs contents of file chosen by user + .txt then assigns each url to a variable and encodes it onto the link tag
 
-function listsources ($anime, $title) {
+/*function listsources ($anime, $title) {
 	$anime = preg_replace('/[\s]/', "-" , $anime);
 	echo "<h1>" . $title . "</h1>";
 	$resource = file($anime . ".txt");
@@ -45,7 +54,7 @@ function listsources ($anime, $title) {
 			echo "<a href=http://www.tubeoffline.com/download.php?host=AnimeHere&retry=1&video=" . $string . ">" . $name . "</a></br></br>";
 		};
 	
-};
+};*/
 
 ?>
 

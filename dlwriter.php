@@ -1,5 +1,5 @@
 		
-		<?php
+<?php
 
 	function makefile ($anime, $amount){
 	$anime = preg_replace('/[\s]/', "-" , $anime);
@@ -12,7 +12,7 @@
 		fwrite($myfile, $txt);
 		
 		}
-	echo "$amount files lines of $anime have been written to $myfile";
+	echo "$amount file lines of $anime have been written to $myfile";
 	fclose($myfile);
 	
 	}
